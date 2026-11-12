@@ -1,2 +1,2 @@
 # manga-site
-site de maga para o projeto integrador
+Site de mangá para o projeto prático de javascript de desenvolvimento web
