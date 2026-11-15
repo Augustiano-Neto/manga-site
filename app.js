@@ -109,6 +109,55 @@ const mangas = [
         finalizado: true,
         favorito: true
     }
+    
+    {
+        id: 11,
+        nome: 'Nano Machine',
+        categoria: 'Ação, Aventura, artes marciais',
+        descricao: 'Veja a combinação de artes marciais com nanotecnologia',
+        ano_lancamento: 2020,
+        nota: 9.9,
+        numeros_capitulos: 338,
+        finalizado: true,
+        favorito: true
+    }
+    
+    {
+        id: 12,
+        nome: 'O Deus do caos',
+        categoria: 'Ação, Aventura, artes marciais',
+        descricao: 'O surgimento de monstro que futuramente recebera o titulo de Deus',
+        ano_lancamento: 2024,
+        nota: 9.9,
+        numeros_capitulos: 124,
+        finalizado: false,
+        favorito: true
+    }
+
+        {
+        id: 13,
+        nome: 'O melhor homem no comando',
+        categoria: 'Ação, Aventura, artes marciais, escolar',
+        descricao: 'Um menino de outro mundo cai na terra após seu planeta ser destruído',
+        ano_lancamento: 2021,
+        nota: 9.8,
+        numeros_capitulos: 209,
+        finalizado: false,
+        favorito: true
+    }
+
+    {
+        id: 14,
+        nome: 'Beskerville',
+        categoria: 'Ação, Aventura, Fantasia, Mistério',
+        descricao: 'A traição de sua familia o fez se tornar um monstro sedento por vingaça',
+        ano_lancamento: 2023,
+        nota: 9.7,
+        numeros_capitulos: 198,
+        finalizado: false,
+        favorito: true
+    }
+    
 ];
 
 const catalogo = {
@@ -117,9 +166,11 @@ const catalogo = {
     adicionarManga: function(item){
         this.itens.push(item)
     },
+
     listarManga: function(){
         return this.itens
     },
+
     filtrarFinalizado: function(){
         let resultado = [];
         for(let i = 0; i < this.itens.length; i++ ){
@@ -131,3 +182,36 @@ const catalogo = {
         return resultado
     }
 }
+
+/* fucao para exibir na pagina */
+function exibirMangas() {
+
+    const lista = document.getElementById("Listar-Mangas");
+
+    lista.innerHTML = "";
+
+    catalogo.itens.forEach(item => {
+
+        lista.innerHTML += `
+            <div class="mangas">
+                <h3>class="${item.favorito ? 'favorito': ''}">${item.nome}</h3> 
+                <p><strong>Categoria: </strong>  ${item.categoria}</p>
+                <p><strong>Descrição: </strong>  ${item.descricao}</p>
+                <p><strong>Lançamento: </strong> ${item.ano_lancamento}</p>
+                <p><strong>Avaliação: </strong>  ${item.nota}</p>
+                <p><strong>Capitulos: </strong>  ${item.numeros_capitulos}</p>
+                <p><strong>Finalizado:</strong>  <span class="${item.finalizado ? 'finalizado' : 'em-andamento'}">
+        ${item.finalizado ? 'Sim' : 'Não'}
+    </span></p> 
+            </div>
+        `;
+
+    });
+}
+
+
+// Inicializando o catálogo
+exibirMangas();
+
+console.log("Nome:", catalogo.nome);
+
