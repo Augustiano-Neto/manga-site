@@ -28,6 +28,13 @@ header p {
 
 }
 
+
+.filtros {
+
+    text-align: right;
+    
+}
+
 header h1 span {
   color: white; /* Branco padrão do navegador */
 }
@@ -50,7 +57,7 @@ main {
 
 #Listar-Mangas {
     display: grid;      /*conteiner de grade*/
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /*divisao de colunas e um redimencionamento automatico*/
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /*divisao de colunas e um redimencionamento automatico*/
     gap: 20px; /*espaçamento entre as colunas*/
 }
 
@@ -92,7 +99,8 @@ main {
 .mangas img {
     width: 100%;
     height: 250px;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 8px;
     margin-bottom: 15px;
+    display: block;
 }

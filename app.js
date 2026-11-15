@@ -4,7 +4,7 @@ const mangas = [
         id:1, 
         nome: 'Solo leveling',
         imagem: 'imagens/solo-leveling.jpeg',  
-        categoria: 'Ação, fantasia',
+        categoria: 'Ação, Fantasia',
         descricao: 'Um jovem considerado o pior após quase morrer evolui', 
         ano_lancamento: 2016, 
         nota: 9, 
@@ -15,7 +15,7 @@ const mangas = [
         id: 2,
         nome: 'One Piece',
         imagem: 'imagens/one-piece.jpeg',
-        categoria: 'Aventura, ação',
+        categoria: 'Aventura, Ação',
         descricao: 'Um jovem pirata busca encontrar o lendário tesouro One Piece',
         ano_lancamento: 1997,
         nota: 9.5,
@@ -27,7 +27,7 @@ const mangas = [
         id: 3,
         nome: 'Berserk',
         imagem: 'imagens/berserk.jpeg',
-        categoria: 'Ação, fantasia sombria',
+        categoria: 'Ação, Fantasia',
         descricao: 'Um guerreiro enfrenta criaturas e desafios em um mundo sombrio',
         ano_lancamento: 1989,
         nota: 9.7,
@@ -39,7 +39,7 @@ const mangas = [
         id: 4,
         nome: 'Death Note',
         imagem: 'imagens/death-note.jpeg',
-        categoria: 'Suspense, psicológico',
+        categoria: 'Suspense, Psicológico',
         descricao: 'Um estudante encontra um caderno capaz de matar pessoas',
         ano_lancamento: 2003,
         nota: 9.2,
@@ -51,7 +51,7 @@ const mangas = [
         id: 5,
         nome: 'Naruto',
         imagem: 'imagens/naruto.jpeg',
-        categoria: 'Ação, aventura',
+        categoria: 'Ação, Aventura',
         descricao: 'Um jovem ninja busca reconhecimento e sonha em se tornar Hokage',
         ano_lancamento: 1999,
         nota: 9.6,
@@ -63,7 +63,7 @@ const mangas = [
         id: 6,
         nome: 'Tokyo Ghoul',
         imagem: 'imagens/tokyo-ghol.jpeg',
-        categoria: 'Terror, ação',
+        categoria: 'Terror, Ação',
         descricao: 'Um estudante passa a viver entre humanos e criaturas chamadas Ghouls',
         ano_lancamento: 2011,
         nota: 8.6,
@@ -75,7 +75,7 @@ const mangas = [
         id: 7,
         nome: 'Jujutsu Kaisen',
         imagem: 'imagens/jujutsu-kaisen.jpeg',
-        categoria: 'Ação, sobrenatural',
+        categoria: 'Ação, Sobrenatural',
         descricao: 'Um estudante entra no mundo da feitiçaria após ingerir um objeto amaldiçoado',
         ano_lancamento: 2018,
         nota: 9.1,
@@ -87,7 +87,7 @@ const mangas = [
         id: 8,
         nome: 'Vagabond',
         imagem: 'imagens/vagabond.jpeg',
-        categoria: 'Ação, histórico',
+        categoria: 'Ação, Histórico',
         descricao: 'A jornada de um espadachim em busca de aperfeiçoamento pessoal',
         ano_lancamento: 1998,
         nota: 9.6,
@@ -99,7 +99,7 @@ const mangas = [
         id: 9,
         nome: 'The Beginning After the End',
         imagem: 'imagens/beginner.jpeg',
-        categoria: 'Ação, fantasia',
+        categoria: 'Ação, Fantasia',
         descricao: 'Um grande rei é morto envenenado e após reencarnar busca ter uma vida melhor',
         ano_lancamento: 2018,
         nota: 9.5,
@@ -123,7 +123,7 @@ const mangas = [
         id: 11,
         nome: 'Nano Machine',
         imagem: 'imagens/nano-machine.jpeg',
-        categoria: 'Ação, Aventura, artes marciais',
+        categoria: 'Ação, Aventura, Artes Marciais',
         descricao: 'Veja a combinação de artes marciais com nanotecnologia',
         ano_lancamento: 2020,
         nota: 9.9,
@@ -136,7 +136,7 @@ const mangas = [
         id: 12,
         nome: 'O Deus do caos',
         imagem: 'imagens/deus-caos.jpeg',
-        categoria: 'Ação, Aventura, artes marciais',
+        categoria: 'Ação, Aventura, Artes Marciais',
         descricao: 'O surgimento de monstro que futuramente recebera o titulo de Deus',
         ano_lancamento: 2024,
         nota: 9.9,
@@ -149,7 +149,7 @@ const mangas = [
         id: 13,
         nome: 'O melhor homem no comando',
         imagem: 'imagens/melhor-comando.jpeg',
-        categoria: 'Ação, Aventura, artes marciais, escolar',
+        categoria: 'Ação, Aventura, Artes Marciais, Escolar',
         descricao: 'Um menino de outro mundo cai na terra após seu planeta ser destruído',
         ano_lancamento: 2021,
         nota: 9.8,
@@ -227,9 +227,13 @@ function renderizar(lista) {
 
         // verificando as categorias para inserir
         switch (true) {
+
+            case tipo_categoria.includes("Escolar"):  
+                categoria.textContent = "Escolar";
+                break;
             
-            case tipo_categoria.includes("artes marciais"):  
-                categoria.textContent = "artes marciais";
+            case tipo_categoria.includes("Artes Marciais"):  
+                categoria.textContent = "Artes Marciais";
                 break;
 
             case tipo_categoria.includes("aventura"):
@@ -296,6 +300,59 @@ function renderizar(lista) {
 
     });
 }
+
+const campo_busca = document.getElementById('campo_busca'); //pegado o nome digitado 
+
+const filtro_categoria = document.getElementById('categoria_escolhida'); // pegando a categoria selecionada
+
+
+//função de pesquisa de magas
+
+function pesquisarMangas() {
+
+    let lista_Filtrada = [];
+
+    const texto_busca = campo_busca.value.toLowerCase();
+    const categoria_escolhida = filtro_categoria.value.toLowerCase();
+
+    for (let i = 0; i < mangas.length; i++) {
+
+        if (
+            mangas[i].nome.toLowerCase().indexOf(texto_busca) !== -1 &&
+            (categoria_escolhida === 'todas' ||
+            mangas[i].categoria.toLowerCase().indexOf(categoria_escolhida) !== -1)
+        ) {
+
+            lista_Filtrada.push(mangas[i]);
+
+        }
+
+    }
+
+    renderizar(lista_Filtrada);
+
+}
+
+
+campo_busca.addEventListener('input', pesquisarMangas);
+
+// filtro por categoria
+filtro_categoria.addEventListener('change', pesquisarMangas);
+
+// limpar a busca com a tecla ESC
+campo_busca.addEventListener('keydown', function(event) {
+
+    if (event.key === 'Escape') {
+
+        campo_busca.value = '';
+
+        filtro_categoria.value = 'Todas';
+
+        pesquisarMangas();
+
+    }
+
+});
 
 
 
