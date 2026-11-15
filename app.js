@@ -196,34 +196,109 @@ const catalogo = {
     }
 }
 
-/* fucao para exibir na pagina */
-function exibirMangas() {
+// funcao para criar o conteiner dinamicamente apartir de uma lista
 
-    const lista = document.getElementById("Listar-Mangas");
+function renderizar(lista) {
 
-    lista.innerHTML = "";
+    const container = document.getElementById("Listar-Mangas");
 
-    catalogo.itens.forEach(item => {
+    //limpando o conteiner 
+    container.innerHTML = "";
 
-        lista.innerHTML += `
-            <div class="mangas">
-                <img src="${item.imagem}" alt="${item.nome}">  
-                <h3 class="${item.favorito ? 'favorito': ''}" >${item.nome}</h3> 
-                <p><strong>Categoria: </strong>  ${item.categoria}</p>
-                <p><strong>Descrição: </strong>  ${item.descricao}</p>
-                <p><strong>Lançamento: </strong> ${item.ano_lancamento}</p>
-                <p><strong>Avaliação: </strong>  ${item.nota}</p>
-                <p><strong>Capitulos: </strong>  ${item.numeros_capitulos}</p>
-                <p><strong>Finalizado:</strong>  <span class="${item.finalizado ? 'finalizado' : 'em-andamento'}"> ${item.finalizado ? 'Sim' : 'Não'} </span></p> 
-            </div>
-        `;
+    // colocando as info no conteiner dinamicamente 
+    lista.forEach(item => {
+
+        const card = document.createElement("div");     // criando o carsd 
+        card.classList.add("mangas");
+
+        const imagem = document.createElement("img"); // imagem
+        imagem.src = item.imagem;
+        imagem.alt = item.nome;
+
+        const titulo = document.createElement("h3"); // inserindo o nome do manga
+        titulo.textContent = item.nome;
+
+        if (item.favorito) {
+            titulo.classList.add("favorito"); //verificando se o item é favorito e adicionando a classe favorito
+        }
+
+        const categoria = document.createElement("p"); // criando paragrafos
+        const tipo_categoria = item.categoria.toLowerCase(); // criando espaço de cotegoria no card 
+
+        // verificando as categorias para inserir
+        switch (true) {
+            
+            case tipo_categoria.includes("artes marciais"):  
+                categoria.textContent = "artes marciais";
+                break;
+
+            case tipo_categoria.includes("aventura"):
+                categoria.textContent = "Aventura";
+                break;    
+
+            case tipo_categoria.includes("ação"):
+                categoria.textContent = "Ação";
+                break;
+
+            default:
+                categoria.textContent = "Outros";
+        }
+
+        
+        const descricao = document.createElement("p");
+
+        let texto_descricao = item.descricao;
+
+        // colocando o tamanho maximo na descrição 
+        if (texto_descricao.length > 60) {
+            texto_descricao = texto_descricao.slice(0, 60) + "…";
+        }
+
+        descricao.textContent = "Descrição: " + texto_descricao;
+
+        const ano = document.createElement("p");                    
+        ano.textContent = "Lançamento: " + item.ano_lancamento;     //lancamento
+
+        const avaliacao = document.createElement("p");
+        avaliacao.textContent = "Avaliação: " + item.nota.toFixed(1);   //avalicao do manga 
+
+        const capitulos = document.createElement("p");
+        capitulos.textContent = "Capítulos: " + item.numeros_capitulos; //total de capitulos
+
+        const finalizado = document.createElement("p");
+        const status = document.createElement("span"); // destacando o status 
+
+
+            //  verificando se a obra esta finalizada
+        if (item.finalizado) {
+            status.textContent = "Sim";
+            status.classList.add("finalizado");
+        } else {
+            status.textContent = "Não";
+            status.classList.add("em-andamento");
+        }
+
+        finalizado.textContent = "Finalizado: ";
+        finalizado.appendChild(status);            
+
+        //colocando os dados no card
+        card.appendChild(imagem);
+        card.appendChild(titulo);
+        card.appendChild(categoria);
+        card.appendChild(descricao);
+        card.appendChild(ano);
+        card.appendChild(avaliacao);
+        card.appendChild(capitulos);
+        card.appendChild(finalizado);
+
+        // colando o card no conteiner 
+        container.appendChild(card);
 
     });
 }
 
 
-// Inicializando o catálogo
-exibirMangas();
+
+renderizar(catalogo.itens);
 
 console.log("Nome:", catalogo.nome);
-
