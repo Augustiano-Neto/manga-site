@@ -208,7 +208,7 @@ function exibirMangas() {
         lista.innerHTML += `
             <div class="mangas">
                 <img src="${item.imagem}" alt="${item.nome}">  
-                <h3>class="${item.favorito ? 'favorito': ''}">${item.nome}</h3> 
+                <h3 class="${item.favorito ? 'favorito': ''}" >${item.nome}</h3> 
                 <p><strong>Categoria: </strong>  ${item.categoria}</p>
                 <p><strong>Descrição: </strong>  ${item.descricao}</p>
                 <p><strong>Lançamento: </strong> ${item.ano_lancamento}</p>
