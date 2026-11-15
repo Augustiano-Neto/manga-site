@@ -1,4 +1,5 @@
-//[1] Dados do site
+// [R1] QUESTAO 1  ===============================================================================================================================
+
 const mangas = [
     {
         id:1, 
@@ -195,6 +196,12 @@ const catalogo = {
         return resultado
     }
 }
+// [R1] QUESTAO 1  ===============================================================================================================================
+
+
+
+
+// [R2] QUESTAO 2 ===============================================================================================================================
 
 // funcao para criar o conteiner dinamicamente apartir de uma lista
 
@@ -301,10 +308,15 @@ function renderizar(lista) {
     });
 }
 
+// [R2] QUESTAO 2 ===============================================================================================================================
+
+
+
+// [R3] QUESTAO 3  ===============================================================================================================================
+
 const campo_busca = document.getElementById('campo_busca'); //pegado o nome digitado 
 
 const filtro_categoria = document.getElementById('categoria_escolhida'); // pegando a categoria selecionada
-
 
 //função de pesquisa de magas
 
@@ -354,6 +366,7 @@ campo_busca.addEventListener('keydown', function(event) {
 
 });
 
+// [R3] QUESTAO 3  ===============================================================================================================================
 
 
 renderizar(catalogo.itens);
