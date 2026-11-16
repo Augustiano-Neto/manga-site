@@ -185,15 +185,15 @@ const catalogo = {
         return this.itens
     },
 
-    filtrarFinalizado: function(){
-        let resultado = [];
+    removerManga: function(id){
         for(let i = 0; i < this.itens.length; i++ ){
-            console.log(this.itens[i].finalizado)
-            if(this.itens[i].finalizado === true){
-                resultado.push(this.itens[i])
+            console.log(this.itens[i].id)
+            if(this.itens[i].id === id){
+                this.itens.splice(i, 1)
+                return true
             }
         }
-        return resultado
+        return false
     }
 }
 // [R1] QUESTAO 1  ===============================================================================================================================
@@ -368,6 +368,95 @@ campo_busca.addEventListener('keydown', function(event) {
 
 // [R3] QUESTAO 3  ===============================================================================================================================
 
+// [R4] QUESTAO 4  ===============================================================================================================================
+
+const formulario = document.getElementById('formCadastro');
+
+const mensagem = document.getElementById('mensagem');
+
+function validarCadastro(nome, descricao, ano_lancamento, numero_capitulos, categoria){
+    const campoNome = document.getElementById('nome');
+    const campoDescricao = document.getElementById('descricao');
+    const campoAno = document.getElementById('ano_lancamento');
+    const campoCapitulos = document.getElementById('numero_capitulos');
+    const campoCategoria = document.getElementById('cadastro_categoria');
+
+    if (nome.length < 3) {
+        campoNome.classList.add('campo-invalido');
+        throw new Error('O nome precisa ter no mínimo 3 letras');
+    } 
+    else {
+        campoNome.classList.remove('campo-invalido');
+    }
+
+    if (descricao.length < 35) {
+        campoDescricao.classList.add('campo-invalido');
+        throw new Error('A descrição precisa ter no mínimo 35 caracteres');
+    } 
+    else {
+        campoDescricao.classList.remove('campo-invalido');
+    }
+
+    if (ano_lancamento < 1945 || ano_lancamento > new Date().getFullYear() || isNaN(ano_lancamento)) {
+        campoAno.classList.add('campo-invalido');
+        throw new Error('Escolha um ano válido');
+    } 
+    else {
+        campoAno.classList.remove('campo-invalido');
+    }
+
+    if (numero_capitulos <= 0 || isNaN(numero_capitulos)) {
+        campoCapitulos.classList.add('campo-invalido');
+        throw new Error('O número de capítulos precisa ser maior que zero');
+    } 
+    else {
+        campoCapitulos.classList.remove('campo-invalido');
+    }
+
+    if (categoria === '') {
+        campoCategoria.classList.add('campo-invalido');
+        throw new Error('É necessário adicionar uma categoria');
+    } 
+    else {
+        campoCategoria.classList.remove('campo-invalido');
+    }
+}
+
+formulario.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const nome = document.getElementById('nome').value.trim();
+    const descricao = document.getElementById('descricao').value.trim();
+    const ano_lancamento = Number( document.getElementById('ano_lancamento').value);
+    const numero_capitulos = Number(document.getElementById('numero_capitulos').value);
+    const categoria = document.getElementById('cadastro_categoria').value;
+
+    try{
+        validarCadastro(nome, descricao, ano_lancamento, numero_capitulos, categoria)
+
+        const novoManga = {
+            id: catalogo.itens.length+1,
+            nome: nome,
+            imagem: '',
+            categoria: categoria,
+            descricao: descricao,
+            ano_lancamento: ano_lancamento,
+            nota: 0,
+            numeros_capitulos: numero_capitulos,
+            finalizado: false,
+            favorito: false
+        }
+        catalogo.adicionarManga(novoManga)
+        pesquisarMangas();
+        mensagem.textContent = 'Cadastro feito com sucesso';
+        formulario.reset();
+    }
+    catch(erro){
+        mensagem.textContent = erro.message;
+    }
+});
+
+// [R4] QUESTAO 4  ===============================================================================================================================
 
 renderizar(catalogo.itens);
 
