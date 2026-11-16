@@ -52,8 +52,53 @@
 
 
 
+
+
 <!-- conteudo principal -->
     <main>
+
+        <!-- [R4] QUESTAO 4 ========================================================================================================= -->
+
+        <section id="cadastro">
+            
+            <h2>CADASTRO DE MANGÁ</h2>
+
+            <form id="formCadastro" novalidate>
+
+                <label for="nome">Nome:</label> 
+                <input type="text" id="nome">
+
+                <label for="descricao">Descrição:</label> 
+                <input type="text" id="descricao">
+
+                <label for="ano_lancamento">Ano de Lançamento:</label> 
+                <input type="number" id="ano_lancamento">
+
+                <label for="numero_capitulos">Número de Capítulos:</label> 
+                <input type="number" id="numero_capitulos">
+
+                <select id="cadastro_categoria">
+                    <option value="">Selecione uma opção</option>
+                    <option value="Ação">Ação</option>
+                    <option value="Aventura">Aventura</option>
+                    <option value="Fantasia">Fantasia</option>
+                    <option value="Suspense">Suspense</option>
+                    <option value="Terror">Terror</option>
+                    <option value="Sobrenatural">Sobrenatural</option>
+                    <option value="Histórico">Histórico</option>
+                    <option value="Psicológico">Psicológico</option>
+                    <option value="Artes Marciais">Artes Marciais</option>
+                    <option value="Escolar">Escolar</option>
+                </select>
+
+                <button type="submit">Enviar</button>
+                
+            </form>
+
+            <p id="mensagem"></p>
+        </section>
+
+        <!-- [R4] QUESTAO 4 ========================================================================================================= -->
 
         <section id="catalogo">
 
