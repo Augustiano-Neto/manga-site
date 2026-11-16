@@ -108,3 +108,11 @@ main {
 .campo-invalido{
     border: 2px solid red;
 }
+
+.caixa_cadastro {
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 20px;
+    width: fit-content;
+    margin: 30px auto;
+}
