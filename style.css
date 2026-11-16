@@ -104,3 +104,7 @@ main {
     margin-bottom: 15px;
     display: block;
 }
+
+.campo-invalido{
+    border: 2px solid red;
+}
