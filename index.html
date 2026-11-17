@@ -18,7 +18,7 @@
     <header>
 
         <h1>MANGA<span>con</span></h1>
-        <p>Descubra mundos completamente novos</p>
+        <h2>Descubra mundos completamente novos</h2>
 
 
         <!-- [R3] QUESTAO 3 ====================================================================================================== -->
@@ -70,22 +70,24 @@
   
  <!-- [R4] QUESTAO 4 ========================================================================================================= -->
 
+    <div id="caixas_finais">
+
         <section id="cadastro" class="caixa_cadastro">
             
             <h2>CADASTRO DE MANGÁ</h2>
 
             <form id="formCadastro" novalidate>
 
-                <label for="nome">Nome:</label> 
+                <label for="nome">Nome:</label><p> 
                 <input type="text" id="nome">
                 <p>
-                <label for="descricao">Descrição:</label> 
+                <label for="descricao">Descrição:</label><p> 
                 <input type="text" id="descricao">
                 <p>   
-                <label for="ano_lancamento">Ano de Lançamento:</label> 
+                <label for="ano_lancamento">Ano de Lançamento:</label><p> 
                 <input type="number" id="ano_lancamento">
                 <p>     
-                <label for="numero_capitulos">Número de Capítulos:</label> 
+                <label for="numero_capitulos">Número de Capítulos:</label><p>
                 <input type="number" id="numero_capitulos">
                 <p>    
                 <select id="cadastro_categoria">
@@ -111,9 +113,28 @@
 
 <!-- [R4] QUESTAO 4 ========================================================================================================= -->
 
+<!-- [R6] QUESTAO 6 ========================================================================================================= -->
+
+<section id="painel_estatisticas">
+
+    <h2>Estatísticas dos Mangás</h2>
+
+    <p>Total de mangás: <span id="painel_total">0</span></p>
+
+    <p>Favoritos: <span id="painel_favoritos">0</span></p>
+
+    <p>Média das notas: <span id="painel_media">—</span></p>
+
+    <p>Maior nota: <span id="painel_maior">—</span></p>
+
+</section>
+
+</div>
+ <!-- [R6] QUESTAO 6 ========================================================================================================= -->
+
 
     </main>
 
-    <script src="app.js"></script> <!-- conecta arquivo javaScript -->>
+    <script src="js/app.js" defer></script> <!-- conecta arquivo javaScript -->
 </body>
 </html>

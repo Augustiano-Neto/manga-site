@@ -22,9 +22,10 @@ header{
     padding: 5px;
 }
 
-header p {
+header h2 {
 
-    color: white; 
+    font-family: 'Brush Serpent', 'Brush Script MT', cursive;
+    color: white;
 
 }
 
@@ -60,6 +61,7 @@ main {
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /*divisao de colunas e um redimencionamento automatico*/
     gap: 20px; /*espaçamento entre as colunas*/
 }
+
 
 /*blocos de estilo de classe*/
 /* fudno do quadro na grade*/
@@ -110,11 +112,36 @@ main {
     border: 2px solid red;
 }
 
-.caixa_cadastro {
-    
-    border: 2px solid white;
-    border-radius: 10px;
-    padding: 20px;
-    width: fit-content;
-    margin: 30px auto;
+#caixas_finais {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    gap: 40px;
+    margin: 40px auto;
+    flex-wrap: wrap;
 }
+
+#caixas_finais h2 {
+    text-decoration: underline;
+    margin-bottom: 10px;
+    color: blue;
+}
+.caixa_cadastro {
+    border: 2px solid blue;
+    border-radius: 10px;
+    padding: 25px;
+    width: 350px;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#painel_estatisticas {
+    border: 2px solid blue;
+    border-radius: 10px;
+    padding: 25px;
+    width: 350px;
+    margin: 0;
+    box-sizing: border-box;
+}
+
