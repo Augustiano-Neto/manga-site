@@ -279,7 +279,21 @@ function renderizar(lista) {
         const finalizado = document.createElement("p");
         const status = document.createElement("span"); // destacando o status 
 
+        // [R5] QUESTAO 5 (PARTE 1) ========================================================================================================================
 
+        const botaofavorito = document.createElement('button')
+
+            //  exibindo texto de botão dinâmico
+        if (item.favorito === true){
+            botaofavorito.textContent = 'Remover Favorito';
+        }
+        else{
+            botaofavorito.textContent = 'Adicionar Favorito';
+        }
+
+
+        // [R5] QUESTAO 5 (PARTE 1) ========================================================================================================================
+    
             //  verificando se a obra esta finalizada
         if (item.finalizado) {
             status.textContent = "Sim";
@@ -301,6 +315,27 @@ function renderizar(lista) {
         card.appendChild(avaliacao);
         card.appendChild(capitulos);
         card.appendChild(finalizado);
+        // item da [R5]
+        card.appendChild(botaofavorito);
+
+        // [R5] QUESTAO 5 (PARTE 2) ========================================================================================================================
+
+        botaofavorito.addEventListener('click', function(){
+            item.favorito = !item.favorito
+            if (item.favorito === true){
+            botaofavorito.textContent = 'Remover Favorito';
+        }
+        else{
+            botaofavorito.textContent = 'Adicionar Favorito';
+        }
+
+        titulo.classList.toggle("favorito")
+
+        });
+
+
+        // [R5] QUESTAO 5 (PARTE 2) ========================================================================================================================
+
 
         // colando o card no conteiner 
         container.appendChild(card);
